@@ -2,39 +2,50 @@
 <html lang="en">
 
 <head>
+    <!-- Metadati della pagina -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Slider</title>
-     <!--  Bootstrap  -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- CSS personalizzato -->
     <link rel="stylesheet" href="./css/style.css" />
 </head>
 
 <body>
 
+    <!-- Il contenuto dell'app Vue -->
     <div id="app">
 
+        <!-- Container Bootstrap per centrare il contenuto -->
         <div class="container">
+            <!-- Wrapper per il componente slider -->
             <div class="slider-wrapper" tabindex="0">
 
+                <!-- slide -->
                 <div class="item">
+                    <!-- Immagine della slide ( in base all'indice della slide attiva) -->
                     <img :src="slides[activeSlideIndex].image" alt="Slide" />
+                    <!-- Testo della slide (in base all'indice della slide attiva) -->
                     <div class="text">
                         <h3>{{ slides[activeSlideIndex].title }}</h3>
                         <p>{{ slides[activeSlideIndex].text }}</p>
                     </div>
                 </div>
 
+                <!-- Miniature delle slide -->
                 <div class="thumbs">
+                    <!-- Pulsante per passare alla slide precedente -->
                     <div class="prev" @click="prevSlide"></div>
+                    <!-- Pulsante per passare alla slide successiva -->
                     <div class="next" @click="nextSlide"></div>
-                   
-                    <div class="thumb" 
-                     v-for="(currentImage, index) in slides"
-                     :src='currentImage' 
-                      v-show="index == activeSlideIndex">
-                      <img :src="currentImage.image" alt="Thumbnail" />
+                    <!-- Miniature delle slide (cliccabili per passare direttamente alla slide corrispondente) -->
+                    <div class="thumb"
+                     @click="changeSlide(index)"
+                      v-for="(currentImage, index) in slides">
+                        <!-- Immagine della miniatura (dinamica in base all'immagine corrente nell'iterazione) -->
+                        <img :src="currentImage.image" alt="Thumbnail" />
                     </div>
                 </div>
 
@@ -43,8 +54,9 @@
 
     </div>
 
+    <!-- Script Vue -->
     <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
-
+    <!-- Script js -->
     <script src="./js/script.js"></script>
 </body>
 
