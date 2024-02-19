@@ -21,7 +21,7 @@
         <!-- Container Bootstrap per centrare il contenuto -->
         <div class="container">
             <!-- Wrapper per il componente slider -->
-            <div class="slider-wrapper" tabindex="0">
+            <div class="slider-wrapper" tabindex="0" @mouseover="noPlay"  @mouseleave="autoplay">
 
                 <!-- slide -->
                 <div class="item">

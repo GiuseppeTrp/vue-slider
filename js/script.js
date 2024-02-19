@@ -34,10 +34,10 @@ createApp({
                 }
             ],
       }
+    }, created() {
+        this.interval= setInterval(this.nextSlide, 3000);
     },
-    created() {
-        setInterval(this.nextSlide, 3000);
-    },
+   
     methods:{
         nextSlide() {
         this.activeSlideIndex++;
@@ -61,6 +61,13 @@ createApp({
        
         this.activeSlideIndex = index
     },
+    noPlay(){
+        clearInterval(this.interval);
+    },
+    autoplay() {
+        this.interval= setInterval(this.nextSlide, 3000);
+    }
+    
 
   
 },
