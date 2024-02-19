@@ -8,6 +8,7 @@ createApp({
       return {
 
         activeSlideIndex: 0,
+       
 
         slides : [
             {
@@ -33,7 +34,11 @@ createApp({
                 }
             ],
       }
-    },methods:{
+    },
+    created() {
+        setInterval(this.nextSlide, 3000);
+    },
+    methods:{
         nextSlide() {
         this.activeSlideIndex++;
 
@@ -56,8 +61,12 @@ createApp({
        
         this.activeSlideIndex = index
     },
+
+  
+},
+
 }
-}).mount('#app');
+).mount('#app');
 
 
 
